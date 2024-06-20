@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrapper" style="display: flex;">
+        <aside style="font-weight: 600; background-color: black; color: white; width: 200px; height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 20px; padding-top: 70px; border-right: 1px solid white;">
+            <img width="100px" style="border-radius: 50%;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQi2Mm5P8j09P4hPKa1B-t9eIOHzHmR7IBkw&s" alt="">
+            <div>Create post</div>
+            <div>Update post</div>
+            <div>Read post</div>
+            <div>Delete post</div>
+        </aside>
+        <div style="width: 86%;background-color: black;">
+            <header style="height: 100px; display: flex; justify-content: center; align-items: center; gap: 50px; border-bottom: 1px solid white;">
+                <!-- <div class="form d-flex"> -->
+                    <div class="form-group">
+                        <input style="width: 500px;" type="text" class="form-control" placeholder="search">
+                    </div>
+                    <button class="btn btn-outline-danger">logout</button>
+                <!-- </div> -->
+            </header>
+            <main style="width: 100%; height: 84%; color: white; display: flex; justify-content: center; align-items: center;">
+                <form style="width: 500px; border: 1px solid white; padding: 20px; border-radius: 20px;" >
+                    <fieldset>
+                        <legend>Sign up</legend>
+                        <div class="form-group mb-2">
+                            <label>Firstname</label>
+                            <input type="text" class="form-control" placeholder="firstname">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label>Lastname</label>
+                            <input type="text" class="form-control" placeholder="lastname">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label>Email</label>
+                            <input type="text" class="form-control" placeholder="email">
+                        </div>
+                        <div class="form-group mb-2">
+                            <label>password</label>
+                            <input type="text" class="form-control" placeholder="password">
+                        </div>
+                    </fieldset>
+                </form>
+
+            </main>
+        </div>
+    </div>
+    
+</body>
+</html>

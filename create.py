@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from flask_mysqldb import MySQL
 # print(MySQL)
 
@@ -10,14 +10,24 @@ server.config["MYSQL_PASSWORD"] = ""
 server.config["MYSQL_DB"] = "dynamo_db"
 mysql = MySQL(server)
 # home page route
-@server.route("/home", methods=["GET", "POST"])
+@server.route("/", methods=["GET"])
 def homepage():
     if(request.method == "GET"):
-        return jsonify({
-            "message": "welcome",
-            "code": "success"
-        })
+        cur = mysql.connection.cursor()
+        sql = cur.execute("SELECT * FROM `users`")
+        if(sql):
+            mysql.connection.commit()
+            return jsonify(cur.fetchall())
+        # return jsonify({
+        #     "message": "welcome",
+        #     "code": "success"
+        # })
     return "COULD NOT LOAD PAGE"
+
+
+@server.route("/home", methods=["GET"])
+def home():
+    return render_template("home.html")
 
 
 
