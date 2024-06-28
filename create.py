@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request, render_template, session
 from flask_mysqldb import MySQL
 import bcrypt
+from MySQLdb.cursors import DictCursor
 
 
 server = Flask(__name__)
@@ -9,6 +10,7 @@ server.config["MYSQL_HOST"] = "localhost"
 server.config["MYSQL_USER"] = "root"
 server.config["MYSQL_PASSWORD"] = ""
 server.config["MYSQL_DB"] = "dynamo_db"
+mysql = MySQL(server, cursorclass=DictCursor)
 mysql = MySQL(server)
 
 # home page route
@@ -107,10 +109,10 @@ def login():
     user = cur.fetchone()
     cur.close()
     if user and bcrypt.checkpw(password.encode("utf-8"), user[4].encode("utf-8")):  
-        session['email'] = user[3]
-        session['firstname'] = user[1]
-        session['lastname'] = user[2]
-        return jsonify({"message": "Login successful", "code": "success"}), 200
+        session['email'] = user['email']
+        session['firstname'] = user['firstname']
+        session['lastname'] = user['lastname']
+        return jsonify({"message": "Login successful", "code": "success", "data": user}), 200
     else:
         return jsonify({"error": "Invalid email or password"}), 401
 
